@@ -58,9 +58,10 @@ namespace Amazon.Extensions.Configuration.SystemsManager.Internal
             _data.Clear();
             using (_reader = new JsonTextReader(input) {DateParseHandling = DateParseHandling.None})
             {
-                var jsonConfig = JObject.Load(_reader);
 
-                VisitJObject(jsonConfig);
+                var jsonConfig = JToken.Load(_reader);
+
+                VisitToken(jsonConfig);
 
                 return _data;
             }
